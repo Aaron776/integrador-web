@@ -1,11 +1,11 @@
 package com.rafael.falconi.example.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Objects;
 
-@Entity
+
+@Entity(name = "area")
 public class Area {
 
     @Id
@@ -14,12 +14,16 @@ public class Area {
 
     private String name;
 
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.REMOVE},fetch = FetchType.EAGER)
+    private Area area;
+
     public Area() {
     }
 
-    public Area(int id, String name) {
+    public Area(int id, String name, Area area) {
         this.id = id;
         this.name = name;
+        this.area = area;
     }
 
     public int getId() {
@@ -36,5 +40,26 @@ public class Area {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Area that = (Area) obj;
+        return id == that.getId();
     }
 }

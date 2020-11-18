@@ -16,7 +16,7 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Position position;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.REMOVE},fetch = FetchType.EAGER)
     private Area area;
 
     public Employee() {
