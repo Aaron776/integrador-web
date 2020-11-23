@@ -22,6 +22,19 @@ public class Area {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Area that = (Area) obj;
+        return id == that.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
     public int getId() {
         return id;
     }
