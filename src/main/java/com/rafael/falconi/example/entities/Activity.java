@@ -17,17 +17,21 @@ public class Activity {
     @Lob
     private String description;
 
+    @Lob
+    private String message;
+
     @ManyToOne
     private Employee employee;
 
     public Activity() {
     }
 
-    public Activity(int id, String title, Date date, String description, Employee employee) {
+    public Activity(int id, String title, Date date, String description, String message, Employee employee) {
         this.id = id;
         this.title = title;
         this.date = date;
         this.description = description;
+        this.message = message;
         this.employee = employee;
     }
 
@@ -82,5 +86,13 @@ public class Activity {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
