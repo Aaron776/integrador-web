@@ -17,7 +17,7 @@ public class Activity {
     @Lob
     private String description;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.REMOVE},fetch = FetchType.EAGER)
+    @ManyToOne
     private Employee employee;
 
     public Activity() {
