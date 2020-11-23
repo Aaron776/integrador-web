@@ -34,4 +34,5 @@ public class AuthResource {
         return new ResponseEntity(areaOptional.get(), HttpStatus.ACCEPTED);
     }
 
+
 }
