@@ -8,10 +8,10 @@ public class Employee {
 
     @Id
     @Column(length = 10)
-    @Size(min=10,max = 10)
+    @Size(min = 10, max = 10)
     private String Ci;
 
-    private String name,lastName,password;
+    private String name, lastName, password;
 
     @Enumerated(EnumType.STRING)
     private Position position;
@@ -29,6 +29,19 @@ public class Employee {
         this.password = password;
         this.position = position;
         this.area = area;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Employee that = (Employee) obj;
+        return Ci.equals(that.getCi());
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
     }
 
     public String getCi() {
