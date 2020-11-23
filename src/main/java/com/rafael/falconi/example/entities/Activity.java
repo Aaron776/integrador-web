@@ -17,18 +17,35 @@ public class Activity {
     @Lob
     private String description;
 
+    @Lob
+    private String message;
+
     @ManyToOne
     private Employee employee;
 
     public Activity() {
     }
 
-    public Activity(int id, String title, Date date, String description, Employee employee) {
+    public Activity(int id, String title, Date date, String description, String message, Employee employee) {
         this.id = id;
         this.title = title;
         this.date = date;
         this.description = description;
+        this.message = message;
         this.employee = employee;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Activity that = (Activity) obj;
+        return id == that.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
     }
 
     public int getId() {
@@ -69,5 +86,13 @@ public class Activity {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
