@@ -25,7 +25,7 @@ public class AuthController {
         Employee employeeDb = employeeOptional.get();
         if (employeeDb.getPassword().equals(employee.getPassword())
                 && (employeeDb.getPosition() == Position.Gerente || employeeDb.getPosition() == Position.Subgerente)) {
-            return Optional.of(employee.getArea());
+            return Optional.of(employeeDb.getArea());
         } else {
             return Optional.empty();
         }

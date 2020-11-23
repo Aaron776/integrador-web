@@ -1,5 +1,6 @@
 package com.rafael.falconi.example.api_controllers;
 
+import com.rafael.falconi.example.api_controllers.exceptions.LoginException;
 import com.rafael.falconi.example.controllers.AuthController;
 import com.rafael.falconi.example.entities.Area;
 import com.rafael.falconi.example.entities.Employee;
@@ -21,6 +22,7 @@ public class AuthResource {
     public static final String ADMIN = "/admin";
     private AuthController authController;
 
+
     @Autowired
     public AuthResource(AuthController authController) {
 
@@ -28,10 +30,15 @@ public class AuthResource {
     }
 
     @PostMapping(value = AuthResource.ADMIN)
-    public ResponseEntity loginAdmin(@Valid @RequestBody Employee employee) {
-        Optional<Area> areaOptional = this.authController.login(employee);
-        if (!areaOptional.isPresent()) return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        return new ResponseEntity(areaOptional.get(), HttpStatus.ACCEPTED);
+    public ResponseEntity loginAdmin(@Valid @RequestBody Employee employee) throws LoginException {
+        try {
+            Optional<Area> areaOptional = this.authController.login(employee);
+            if (!areaOptional.isPresent()) return new ResponseEntity("\"datos incorrectos\"", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(areaOptional.get(), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            throw  new LoginException("datos incorrectos");
+        }
+
     }
 
 
