@@ -14,6 +14,7 @@ public class ActivityController {
 
     @Autowired
     public ActivityController(ActivityRepository activityRepository) {
+
         this.activityRepository = activityRepository;
     }
 
