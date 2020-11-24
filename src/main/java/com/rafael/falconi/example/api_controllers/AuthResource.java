@@ -45,10 +45,10 @@ public class AuthResource {
     public ResponseEntity login(@Valid @RequestBody Employee employee) throws LoginException {
         try {
             Optional<Employee> employeeOptional = this.authController.loginEmployee(employee);
-            if (!employeeOptional.isPresent()) return new ResponseEntity("\"datos incorrectos\"", HttpStatus.BAD_REQUEST);
+            if (!employeeOptional.isPresent()) return new ResponseEntity("\"Datos incorrectos\"", HttpStatus.BAD_REQUEST);
             return new ResponseEntity(employeeOptional.get(), HttpStatus.ACCEPTED);
         } catch (Exception e) {
-            throw  new LoginException("datos incorrectos");
+            throw  new LoginException("Datos incorrectos");
         }
 
     }
