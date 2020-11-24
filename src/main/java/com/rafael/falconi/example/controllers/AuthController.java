@@ -31,4 +31,16 @@ public class AuthController {
         }
 
     }
+    
+    public Optional<Employee> loginEmployee(Employee employee) {
+        Optional<Employee> employeeOptional = this.employeeRepository.findById(employee.getCi());
+        if (!employeeOptional.isPresent()) return Optional.empty();
+        Employee employeeDb = employeeOptional.get();
+        if (employeeDb.getPassword().equals(employee.getPassword())){
+            return Optional.of(employeeDb);
+        } else {
+            return Optional.empty();
+        }
+
+    }
 }
