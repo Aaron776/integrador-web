@@ -35,5 +35,11 @@ public class AuthResourceTest {
         restService.restBuilder().path(AuthResource.AUTH).path(AuthResource.ADMIN).body(employee).post().build();
 
     }
+    
+    @Test
+    public void login() {
+        restService.restBuilder().path(AuthResource.AUTH).body(employee).post().build();
+
+    }
 
 }
