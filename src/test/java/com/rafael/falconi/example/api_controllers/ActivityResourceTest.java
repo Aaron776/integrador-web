@@ -1,6 +1,6 @@
 package com.rafael.falconi.example.api_controllers;
 
-import com.rafael.falconi.example.entities.Employee;
+import com.rafael.falconi.example.entities.Activity;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -14,32 +14,35 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AuthResourceTest {
+
+public class ActivityResourceTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Autowired
     private RestService restService;
-    private Employee employee;
+    private Activity activity;
 
     @Before
     public void Before() {
-        this.employee = new Employee();
-        this.employee.setCi("1718438300");
-        this.employee.setPassword("1233472");
-
+        this.activity = new Activity();
+        this.activity.setMessage("La actividad ha sido cambiada");
     }
 
     @Test
-    public void loginAdmin() {
-        restService.restBuilder().path(AuthResource.AUTH).path(AuthResource.ADMIN).body(employee).post().build();
+    public void getActivityByEmployee(){
+        String json= restService.restBuilder(new RestBuilder<String>()).clazz(String.class)
+                .path(ActivityResource.ACTIVITY).path(ActivityResource.ID).expand(1).get().build();
+        System.out.println(json);
+    }
 
+    @Test
+    public void editActivity() {
+        this.restService.restBuilder().path(ActivityResource.ACTIVITY).path(ActivityResource.ID).expand(2)
+                .body(this.activity).put().build();
     }
     
-    @Test
-    public void loginEmployee() {
-        restService.restBuilder().path(AuthResource.AUTH).body(employee).post().build();
-
-    }
-
+  
+    
+    
 }

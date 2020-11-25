@@ -40,6 +40,18 @@ public class AuthResource {
         }
 
     }
+    
+    @PostMapping(value = AuthResource.AUTH)
+    public ResponseEntity login(@Valid @RequestBody Employee employee) throws LoginException {
+        try {
+            Optional<Employee> employeeOptional = this.authController.loginEmployee(employee);
+            if (!employeeOptional.isPresent()) return new ResponseEntity("\"Datos incorrectos\"", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(employeeOptional.get(), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            throw  new LoginException("Datos incorrectos");
+        }
+
+    }
 
 
 }
