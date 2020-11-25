@@ -21,7 +21,7 @@ public class AuthResourceTest {
     @Autowired
     private RestService restService;
     private Employee employee;
-
+   
     @Before
     public void Before() {
         this.employee = new Employee();
@@ -41,5 +41,8 @@ public class AuthResourceTest {
         restService.restBuilder().path(AuthResource.AUTH).body(employee).post().build();
 
     }
+    
+      
+    
 
 }
