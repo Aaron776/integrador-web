@@ -1,21 +1,28 @@
 package com.rafael.falconi.example.controllers;
 
 import com.rafael.falconi.example.entities.Activity;
+import com.rafael.falconi.example.entities.Employee;
 import com.rafael.falconi.example.reposotories.ActivityRepository;
+import com.rafael.falconi.example.reposotories.EmployeeRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 
 public class ActivityController {
     private ActivityRepository activityRepository;
+    private EmployeeRepository employeeRepository;
 
     @Autowired
-    public ActivityController(ActivityRepository activityRepository) {
+    public ActivityController(ActivityRepository activityRepository, EmployeeRepository employeeRepository) {
 
         this.activityRepository = activityRepository;
+        this.employeeRepository = employeeRepository;
+       
     }
 
     public boolean editActivity(Activity activity, int id) {
@@ -25,5 +32,12 @@ public class ActivityController {
         activity1.setMessage(activity.getMessage());
         this.activityRepository.save(activity1);
         return true;
+    }
+    
+    public List<Activity> findActivityByEmployee(String ci) {
+    	   Optional<Employee> employeeDb=this.employeeRepository.findById(ci);
+    	   Employee employee= employeeDb.get();
+    	   return this.activityRepository.findActivityByEmployee(employee);
+    	      	
     }
 }
