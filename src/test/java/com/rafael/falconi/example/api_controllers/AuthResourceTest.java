@@ -26,7 +26,7 @@ public class AuthResourceTest {
     public void Before() {
         this.employee = new Employee();
         this.employee.setCi("1718438300");
-        this.employee.setPassword("1234567");
+        this.employee.setPassword("1233472");
 
     }
 
