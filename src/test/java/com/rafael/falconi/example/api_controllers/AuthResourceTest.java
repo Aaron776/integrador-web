@@ -25,8 +25,8 @@ public class AuthResourceTest {
     @Before
     public void Before() {
         this.employee = new Employee();
-        this.employee.setCi("1725159683");
-        this.employee.setPassword("3489543578");
+        this.employee.setCi("1718438300");
+        this.employee.setPassword("1233472");
 
     }
 
@@ -37,7 +37,7 @@ public class AuthResourceTest {
     }
     
     @Test
-    public void login() {
+    public void loginEmployee() {
         restService.restBuilder().path(AuthResource.AUTH).body(employee).post().build();
 
     }

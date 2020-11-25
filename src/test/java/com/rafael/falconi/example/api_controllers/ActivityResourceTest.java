@@ -29,10 +29,20 @@ public class ActivityResourceTest {
         this.activity.setMessage("La actividad ha sido cambiada");
     }
 
+    @Test
+    public void getActivityByEmployee(){
+        String json= restService.restBuilder(new RestBuilder<String>()).clazz(String.class)
+                .path(ActivityResource.ACTIVITY).path(ActivityResource.ID).expand(1).get().build();
+        System.out.println(json);
+    }
 
     @Test
     public void editActivity() {
         this.restService.restBuilder().path(ActivityResource.ACTIVITY).path(ActivityResource.ID).expand(2)
                 .body(this.activity).put().build();
     }
+    
+  
+    
+    
 }
