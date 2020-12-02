@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -46,10 +47,10 @@ public class ActivityController {
         return true;
     }
     
-    public List<Activity> findActivityByEmployee(String ci) {
+    public List<Activity> findActivityByEmployees(String ci) {
     	   Optional<Employee> employeeDb=this.employeeRepository.findById(ci);
     	   Employee employee= employeeDb.get();
-    	   return this.activityRepository.findActivityByEmployee(employee);
+    	   return this.activityRepository.findActivityByEmployees(employee);
     	      	
     }
 }
