@@ -43,7 +43,7 @@ public class ActivityResource {
                 return new ResponseEntity("\"la actividad no fue encontrada\"", HttpStatus.NOT_FOUND);
             return new ResponseEntity("\"actividad modificada\"", HttpStatus.ACCEPTED);
         } catch (Exception e) {
-            throw new ActivityException("la actividad ha sido modificada");
+            throw new ActivityException("la actividad no ha sido modificada");
 
         }
 

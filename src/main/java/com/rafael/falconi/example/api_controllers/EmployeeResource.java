@@ -27,7 +27,7 @@ public class EmployeeResource {
     }
 
     @GetMapping(value = AREA + ID)
-    public List<Employee> listEmployeeBy(@PathVariable int id) {
+    public List<Employee> listEmployeeByArea(@PathVariable int id) {
         return this.employeeController.findEmployeesByArea(id);
 
     }
