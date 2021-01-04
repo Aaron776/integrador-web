@@ -42,6 +42,11 @@ public class ActivityResourceTest {
                 .body(this.activity).put().build();
     }
     
+    @Test
+    public void listActivity() {
+        this.restService.restBuilder().path(ActivityResource.ACTIVITY).path(ActivityResource.ID).expand(3)
+                .body(this.activity).put().build();
+    }
   
     
     
