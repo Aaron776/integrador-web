@@ -16,9 +16,9 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(ActivityResource.ACTIVITY)
 public class ActivityResource {
-    public static  final String ACTIVITY="/activities";
-    public static final String EMPLOYEE="employee";
-    public static final String ID= "/{id}";
+    public static final String ACTIVITY = "/activities";
+    public static final String EMPLOYEE = "employee";
+    public static final String ID = "/{id}";
 
     private ActivityController activityController;
 
@@ -51,11 +51,11 @@ public class ActivityResource {
         }
 
     }
-    
-    @GetMapping(value = EMPLOYEE+ID)
-    public List<Activity> findActivityByEmployee(@PathVariable String ci){
-    	return this.findActivityByEmployee(ci);
+
+    @GetMapping(value = EMPLOYEE + ID)
+    public List<Activity> findActivityByEmployee(@PathVariable String ci) {
+        return this.findActivityByEmployee(ci);
     }
-    
+
 
 }
