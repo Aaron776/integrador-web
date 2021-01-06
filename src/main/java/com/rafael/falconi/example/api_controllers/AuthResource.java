@@ -36,7 +36,7 @@ public class AuthResource {
             if (!areaOptional.isPresent()) return new ResponseEntity("\"datos incorrectos\"", HttpStatus.BAD_REQUEST);
             return new ResponseEntity(areaOptional.get(), HttpStatus.ACCEPTED);
         } catch (Exception e) {
-            throw  new LoginException("datos incorrectos");
+            throw  new LoginException("Datos Incorrectos");
         }
 
     }

@@ -45,10 +45,12 @@ public class Employee {
     }
 
     public String getCi() {
+
         return Ci;
     }
 
     public void setCi(String ci) {
+
         Ci = ci;
     }
 
