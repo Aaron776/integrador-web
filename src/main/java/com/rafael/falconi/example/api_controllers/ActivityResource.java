@@ -16,9 +16,9 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(ActivityResource.ACTIVITY)
 public class ActivityResource {
-    public static  final String ACTIVITY="/activities";
-    public static final String EMPLOYEE="employee";
-    public static final String ID= "/{id}";
+    public static final String ACTIVITY = "/activities";
+    public static final String EMPLOYEE = "employee";
+    public static final String ID = "/{id}";
 
     private ActivityController activityController;
 
@@ -46,16 +46,16 @@ public class ActivityResource {
                 return new ResponseEntity("\"la actividad no fue encontrada\"", HttpStatus.NOT_FOUND);
             return new ResponseEntity("\"actividad modificada\"", HttpStatus.ACCEPTED);
         } catch (Exception e) {
-            throw new ActivityException("la actividad ha sido modificada");
+            throw new ActivityException("la actividad no ha sido modificada");
 
         }
 
     }
-    
-    @GetMapping(value = EMPLOYEE+ID)
-    public List<Activity> findActivityByEmployee(@PathVariable String ci){
-    	return this.findActivityByEmployee(ci);
+
+    @GetMapping(value = EMPLOYEE + ID)
+    public List<Activity> findActivityByEmployee(@PathVariable String ci) {
+        return this.findActivityByEmployee(ci);
     }
-    
+
 
 }
