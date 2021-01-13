@@ -14,7 +14,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(ActivityResource.ACTIVITY)
+@RequestMapping(value = ActivityResource.ACTIVITY)
 public class ActivityResource {
     public static final String ACTIVITY = "/activities";
     public static final String EMPLOYEE = "employee";
@@ -23,7 +23,6 @@ public class ActivityResource {
     private ActivityController activityController;
 
     @Autowired
-
     public ActivityResource(ActivityController activityController) {
         this.activityController = activityController;
     }
@@ -54,7 +53,7 @@ public class ActivityResource {
 
     @GetMapping(value = EMPLOYEE + ID)
     public List<Activity> findActivityByEmployee(@PathVariable String ci) {
-        return this.findActivityByEmployee(ci);
+        return this.activityController.findActivityByEmployee(ci);
     }
 
 

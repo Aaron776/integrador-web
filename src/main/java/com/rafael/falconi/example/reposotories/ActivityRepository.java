@@ -7,7 +7,7 @@ import com.rafael.falconi.example.entities.Employee;
 
 public interface ActivityRepository extends JpaRepository<Activity,Integer> {
 
-	public List<Activity> findActivityByEmployees(Employee employee);
+	public List<Activity> findActivityListByEmployee(Employee employee);
 	
 	
 	

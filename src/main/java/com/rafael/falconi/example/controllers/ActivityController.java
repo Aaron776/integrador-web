@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-
 public class ActivityController {
     private ActivityRepository activityRepository;
     private EmployeeRepository employeeRepository;
@@ -26,7 +25,7 @@ public class ActivityController {
 
         this.activityRepository = activityRepository;
         this.employeeRepository = employeeRepository;
-       
+
     }
 
     public void createActivity(Activity activity) {
@@ -46,11 +45,11 @@ public class ActivityController {
         this.activityRepository.save(activity1);
         return true;
     }
-    
-    public List<Activity> findActivityByEmployees(String ci) {
-    	   Optional<Employee> employeeDb=this.employeeRepository.findById(ci);
-    	   Employee employee= employeeDb.get();
-    	   return this.activityRepository.findActivityByEmployees(employee);
-    	      	
+
+    public List<Activity> findActivityByEmployee(String ci) {
+        Optional<Employee> employeeDb = this.employeeRepository.findById(ci);
+        Employee employee = employeeDb.get();
+        return this.activityRepository.findActivityListByEmployee(employee);
+
     }
 }
