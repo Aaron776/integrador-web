@@ -52,8 +52,8 @@ public class ActivityResource {
     }
 
     @GetMapping(value = EMPLOYEE + ID)
-    public List<Activity> findActivityByEmployee(@PathVariable String ci) {
-        return this.activityController.findActivityByEmployee(ci);
+    public List<Activity> findActivityByEmployee(@PathVariable String id) {
+        return this.activityController.findActivityByEmployee(id);
     }
 
 
