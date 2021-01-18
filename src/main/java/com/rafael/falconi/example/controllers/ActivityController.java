@@ -8,6 +8,7 @@ import com.rafael.falconi.example.reposotories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -46,10 +47,11 @@ public class ActivityController {
         return true;
     }
 
+    @Transactional
     public List<Activity> findActivityByEmployee(String ci) {
         Optional<Employee> employeeDb = this.employeeRepository.findById(ci);
         Employee employee = employeeDb.get();
-        return this.activityRepository.findActivityListByEmployee(employee);
+        return this.activityRepository.findActivitiesByEmployee(employee);
 
     }
 }
