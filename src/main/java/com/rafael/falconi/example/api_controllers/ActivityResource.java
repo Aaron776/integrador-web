@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -50,11 +51,19 @@ public class ActivityResource {
         }
 
     }
-
     @GetMapping(value = EMPLOYEE + ID)
     public List<Activity> findActivityByEmployee(@PathVariable String id) {
         return this.activityController.findActivityByEmployee(id);
     }
+
+    @GetMapping(value =   ID)
+    public Optional<Activity> findActivityById(@PathVariable int id) {
+        return this.activityController.findActiviyById(id);
+    }
+
+
+
+
 
 
 }

@@ -54,4 +54,9 @@ public class ActivityController {
         return this.activityRepository.findActivitiesByEmployee(employee);
 
     }
+
+    @Transactional
+    public Optional<Activity> findActiviyById(int id) {
+        return this.activityRepository.findById(id);
+    }
 }

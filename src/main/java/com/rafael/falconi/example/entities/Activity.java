@@ -1,5 +1,7 @@
 package com.rafael.falconi.example.entities;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -15,9 +17,11 @@ public class Activity {
     private Date date;
 
     @Lob
+    @Type(type = "org.hibernate.type.TextType")
     private String description;
 
     @Lob
+    @Type(type = "org.hibernate.type.TextType")
     private String message;
 
     @ManyToOne
